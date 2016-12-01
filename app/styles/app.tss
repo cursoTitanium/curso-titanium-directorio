@@ -1,26 +1,78 @@
-/*
-
-This is your global styles file. Selectors and rules you define
-here will be applied throughout your app. However, these rules
-have the lowest priority of any style settings.
-
-For more information, see the "Style Priorities" section of
-http://docs.appcelerator.com/platform/latest/#!/guide/Alloy_Styles_and_Themes
-
-For example, the following would apply to all labels, windows,
-and text fields (depending on platform) in your app unless you
-overrode the settings with other TSS, XML, or JS settings:
-
-'Label[platform=android,windows]': {
-	color: '#000' // all platforms except Android and Windows default to black
-}
-
-'Window': {
-	backgroundColor: '#fff' // white background instead of default transparent or black
-}
-
-'TextField[platform=android]': {
-	height: Ti.UI.SIZE
-}
-
-*/
+//Clases para background
+".bg-verde":{
+	backgroundColor: Alloy.CFG.verde
+},
+".bg-azul":{
+	backgroundColor: Alloy.CFG.azul
+},
+".bg-morado":{
+	backgroundColor: Alloy.CFG.morado
+},
+".bg-negro":{
+	backgroundColor: Alloy.CFG.negro
+},
+".bg-amarillo":{
+	backgroundColor: Alloy.CFG.amarillo
+},
+".bg-naranja":{
+	backgroundColor: Alloy.CFG.naranja
+},
+".bg-rojo":{
+	backgroundColor: Alloy.CFG.rojo
+},
+".bg-blanco":{
+	backgroundColor: Alloy.CFG.blanco
+},
+".bg-gris":{
+	backgroundColor: Alloy.CFG.gris
+},
+//Clases para fuentes
+".ft-verde":{
+	color: Alloy.CFG.verde
+},
+".ft-azul":{
+	color: Alloy.CFG.azul
+},
+".ft-morado":{
+	color: Alloy.CFG.morado
+},
+".ft-negro":{
+	color: Alloy.CFG.negro
+},
+".ft-amarillo":{
+	color: Alloy.CFG.amarillo
+},
+".ft-naranja":{
+	color: Alloy.CFG.naranja
+},
+".ft-rojo":{
+	color: Alloy.CFG.rojo
+},
+".ft-blanco":{
+	color: Alloy.CFG.blanco
+},
+".ft-gris":{
+	color: Alloy.CFG.gris
+},
+//Clases distribución
+".vertical":{
+	layout: "vertical"
+},
+".horizontal":{
+	layout: "horizontal"
+},
+//Clases tamaño
+".fill-size":{
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
+},
+".size-size":{
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE
+},
+"fill-width":{
+	width: Titanium.UI.FILL
+},
+"fill-height":{
+	height: Titanium.UI.FILL
+},
