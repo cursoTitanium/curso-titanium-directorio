@@ -1,4 +1,7 @@
 //Clases para background
+".bg-turquesa":{
+	backgroundColor: Alloy.CFG.turquesa
+},
 ".bg-verde":{
 	backgroundColor: Alloy.CFG.verde
 },
@@ -27,6 +30,9 @@
 	backgroundColor: Alloy.CFG.gris
 },
 //Clases para fuentes
+".ft-turquesa":{
+	color: Alloy.CFG.turquesa
+},
 ".ft-verde":{
 	color: Alloy.CFG.verde
 },

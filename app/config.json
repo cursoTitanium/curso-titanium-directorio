@@ -1,5 +1,6 @@
 {
 	"global": {
+		"turquesa": "#1abc9c",
 		"verde": "#2ecc71",
 		"azul": "#3498db",
 		"morado": "#9b59b6",
