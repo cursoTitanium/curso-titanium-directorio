@@ -1,0 +1,39 @@
+<Alloy>
+	<Window id="win">
+		<ActionBar />
+		<ScrollView class="vertical">
+			<View class="fill-size vertical bg-turquesa">
+				<View class="separador-16" />
+				<ImageView id="foto" />
+				<View class="separador-8" />
+				<Label id="nombre" class="ft-blanco" />
+				<View class="separador-8" />
+				<Label id="usuario" class="ft-blanco" />
+				<View class="separador-16" />
+			</View>
+			<View class="fill-size vertical">
+				<View class="separador-8" />
+				<View class="bloqueInfo">
+					<Label class="telefonoIcono icono iconoIzquierdo ft-negro" />
+					<Label id="telefono" class="titulo ft-negro" />
+				</View>
+				<View class="divisor" />
+				<View class="bloqueInfo">
+					<Label class="emailIcono icono iconoIzquierdo ft-negro" />
+					<Label id="email" class="titulo ft-negro" />
+				</View>
+				<View class="divisor" />
+				<View class="bloqueInfo">
+					<Label class="direccionIcono icono iconoIzquierdo ft-negro" />
+					<Label id="direccion" class="titulo ft-negro" />
+				</View>				
+				<View class="separador-16" />
+			</View>
+		</ScrollView>
+		<View class="acciones horizontal bg-turquesa">
+			<Label id="accionLlamar" class="boton icono" />
+			<Label id="accionMapa" class="boton" />
+			<Label id="accionEmail" class="boton" />
+		</View>
+	</Window>
+</Alloy>

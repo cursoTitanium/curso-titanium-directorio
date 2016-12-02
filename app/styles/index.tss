@@ -1,15 +1,16 @@
-".container": {
-	backgroundColor:"white"
-}
-
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}
-
-"#label": {
-	font: {
-		fontSize: 12
-	}
+"Window":{
+	title: L("appTitulo")
+},
+"SearchView":{
+	backgroundColor: Alloy.CFG.turquesa,
+	iconified: true,
+	hintText: L("hintBuscar")
+},
+"ListView":{
+	separatorColor: "#E6E6E6"
+},
+"#acercaDe":{
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS,
+	title: "Acerca de",
+	icon: "/images/ic_info_outline_white_24dp.png"
 }

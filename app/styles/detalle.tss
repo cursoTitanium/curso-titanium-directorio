@@ -1,0 +1,86 @@
+"Window":{
+	title: L( "detalle")
+},
+"ActionBar":{
+	displayHomeAsUp: true,
+	onHomeIconItemSelected: "close"
+},
+"ScrollView":{
+	scrollType: "vertical",
+	top: 0,
+	bottom: 48
+},
+".divisor":{
+	left: 72,
+	width: Titanium.UI.FILL,
+	height: 2,
+	backgroundColor: "#E6E6E6",
+	top: 8,
+	bottom: 8
+},
+".icono":{
+	font:{
+		fontFamily: "MaterialIcons-Regular",
+		fontSize: 24
+	}
+},
+".acciones":{
+	bottom: 0,
+	width: Titanium.UI.FILL,
+	height: 56,
+	horizontalWrap: false
+},
+".bloqueInfo":{
+	left: 16,
+	right: 16,
+	width: Titanium.UI.FILL,
+	height: 48
+},
+".iconoIzquierdo":{
+	left: 0
+},
+".titulo":{
+	left: 56
+},
+".telefonoIcono":{
+	text: "\uE0CD"
+},
+".emailIcono":{
+	text: "\uE158"
+},
+".direccionIcono":{
+	text: "\uE88A"
+},
+"#foto":{
+	width: "20%",
+	borderRadius: 64
+},
+"#nombre":{
+	font:{
+		fontSize: 22,
+		fontWeight: "bold"
+	}
+},
+"#usuario":{
+	font:{
+		fontSize: 16
+	}
+},
+".boton":{
+	width: "33.33%",
+	height: Titanium.UI.FILL,
+	font:{
+		fontFamily: "MaterialIcons-Regular",
+		fontSize: 24
+	},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#accionLlamar":{
+	text: "\uE0CD"
+},
+"#accionMapa":{
+	text: "\uE0C8"
+},
+"#accionEmail":{
+	text: "\uE158"
+}

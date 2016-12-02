@@ -1,3 +1,6 @@
+"Window":{
+	orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.UPSIDE_PORTRAIT]
+},
 //Clases para background
 ".bg-turquesa":{
 	backgroundColor: Alloy.CFG.turquesa
@@ -81,4 +84,13 @@
 },
 "fill-height":{
 	height: Titanium.UI.FILL
+},
+//Helpers
+".separador-8":{
+	width: Titanium.UI.FILL,
+	height: 8
+},
+".separador-16":{
+	width: Titanium.UI.FILL,
+	height: 16
 },

@@ -1,0 +1,28 @@
+"ItemTemplate":{
+	width: Titanium.UI.FILL,
+	height: 48,
+	left: 16,
+	right: 16
+},
+".titulo":{
+	left: 56,
+	right: 56,
+	font: {
+		fontSize: 16
+	}
+},
+".foto":{
+	left: 0,
+	width: 40,
+	height: 40,
+	borderRadius: 20,
+	defaultImage: "/images/profile.png"
+},
+".icono":{
+	right: 0,
+	font:{
+		fontFamily: "MaterialIcons-Regular",
+		fontSize: 24
+	},
+	text: "\uE315"
+}

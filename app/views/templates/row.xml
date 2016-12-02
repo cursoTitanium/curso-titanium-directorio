@@ -1,0 +1,7 @@
+<Alloy>
+	<ItemTemplate name="row">
+		<ImageView bindId="foto" class="foto" />
+		<Label bindId="titulo" class="titulo ft-negro" />
+		<Label class="icono ft-turquesa" />
+	</ItemTemplate>
+</Alloy>

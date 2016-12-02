@@ -1,5 +1,16 @@
 <Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+	<Window>
+		<Menu>
+			<MenuItem id="acercaDe" onClick="abrirAcercaDe"/>
+		</Menu>
+		<ListView id="list">
+			<SearchView class="searchView" ns="Ti.UI.Android" />
+			<Templates>
+				<Require src="templates/row" />
+			</Templates>
+			<ListSection id="section">
+				<ListItem titulo:text="Texto"></ListItem>
+			</ListSection>
+		</ListView>
 	</Window>
 </Alloy>

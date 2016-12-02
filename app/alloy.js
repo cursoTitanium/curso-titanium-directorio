@@ -1,15 +1,28 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-//Lista de perfiles de usuario
+/**
+ * alloy.js
+ * @description Fichero de declaración de funciones y variables globales
+ */
+
+/**
+ * convertirPrimeraMayuscula
+ * @description Convierte la primera letra de un string en mayúscula
+ * @param {String} cadena
+ * @return {String}
+ */
+Alloy.Globals.convertirPrimeraMayuscula = function(cadena) {
+	return cadena.charAt(0).toUpperCase() + cadena.substring(1);
+};
+
+Alloy.Globals.fotoDetalleWidth = (function getWidth(){
+	var LARGE = 128;
+	return LARGE * Ti.Platform.displayCaps.logicalDensityFactor;
+})();
+
+console.log(Alloy.Globals.fotoDetalleWidth);
+console.log(Ti.Platform.displayCaps.logicalDensityFactor);
+console.log(Ti.Platform.displayCaps.xdpi);
+console.log(Ti.Platform.displayCaps.ydpi);
+
 Alloy.Globals.userList = [{
 	"gender" : "male",
 	"name" : {
