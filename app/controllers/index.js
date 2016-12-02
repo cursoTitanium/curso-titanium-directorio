@@ -34,11 +34,10 @@ function abrirDetalle(e) {
  * @param {Object} e
  */
 function abrirAcercaDe(e){
-	//Alloy.createController("acercaDe").getView().open();
 	Ti.UI.createAlertDialog({
 		title: L("acercaDe"),
 		message: Ti.App.name,
-		ok: L("close")
+		ok: L("cerrar")
 	}).show();
 }
 

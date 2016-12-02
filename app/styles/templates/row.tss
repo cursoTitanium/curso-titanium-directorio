@@ -1,6 +1,6 @@
 "ItemTemplate":{
 	width: Titanium.UI.FILL,
-	height: 48,
+	height: 56,
 	left: 16,
 	right: 16
 },
