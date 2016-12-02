@@ -39,11 +39,16 @@ function accionEmail(e){
  * @description Abrimos la aplicación de mapa
  */
 function accionMapa(e){
-	var result = Ti.Platform.openURL("geo:0,0?q=" + encodeURIComponent(usuario.location.city));
+	
+	var city, result;
+	
+	city = encodeURIComponent(usuario.location.city);
+		
+	result = Ti.Platform.openURL("geo:0,0?q=" + city);
 	
 	//No tenemos una aplicación que abra este esquema de url
 	if(!result){
-		Ti.Platform.openURL("https://www.google.com/maps?q=" + encodeURIComponent(usuario.location.city));
+		Ti.Platform.openURL("https://www.google.com/maps?q=" + city);
 	}
 }
 
