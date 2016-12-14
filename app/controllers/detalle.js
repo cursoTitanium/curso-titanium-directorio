@@ -1,4 +1,16 @@
-//Recogemos los parámetros que nos pasa index.js
+/**
+ * Controlador detalle de aplicación
+ * @author Jorge Macías García
+ * @version 1.0
+ */
+
+//##DETALLE.JS
+//### Controlador detalle de la aplicación
+
+//Este controlador se encarga de mostrar los datos de un usuario
+//permitiendo llamarle por telefono, accediendo a su localización y enviarle un email
+
+//Recogemos los parámetros que vienen de index.js
 var args = $.args,
     usuario = args.usuario || {};
 
@@ -23,7 +35,14 @@ $.direccion.setText(usuario.direccion);
  * @description Abrimos la aplicación de llamadas
  */
 function accionLlamar(e){
-	Ti.Platform.openURL("tel:"+usuario.telefono);
+  //Utilizamos la función openURL para ejecutar el esquema de telefono
+  var result = Ti.Platform.openURL("tel:"+usuario.telefono);
+
+  //Si no ha tenido éxito la operación informamos que el dispositivo no puede
+  //realizar llamadas.
+  if(!result){
+    alert("Este dispositivo no puede hacer llamadas");
+  }
 }
 
 /**
@@ -31,7 +50,14 @@ function accionLlamar(e){
  * @description Abrimos la aplicación de email
  */
 function accionEmail(e){
-	Ti.Platform.openURL("mailto:"+usuario.email);
+  //Utilizamos la función openURL para ejecutar el esquema de envío de email
+	var result = Ti.Platform.openURL("mailto:"+usuario.email);
+
+  //Si no ha tenido éxito la operación informamos que el dispositivo no tiene
+  //una aplicación para enviar emails
+  if(!result){
+    alert("Este dispositivo no tiene una aplicación instalada que permita enviar emails");
+  }
 }
 
 /**
@@ -39,25 +65,20 @@ function accionEmail(e){
  * @description Abrimos la aplicación de mapa
  */
 function accionMapa(e){
-	
+
 	var city, result;
-	
+
+  //Codificamos la dirección para enviarlo como parámetro de url
 	city = encodeURIComponent(usuario.direccion);
-		
+
+  //Utilizamos la función openURL para ejecutar el esquema de mapas
 	result = Ti.Platform.openURL("geo:0,0?q=" + city);
-	
-	//No tenemos una aplicación que abra este esquema de url
+
+  //Si no ha tenido éxito la operación informamos que el dispositivo no tiene
+  //una aplicación para visualizar el mapa y abrimos el navegador
 	if(!result){
 		Ti.Platform.openURL("https://www.google.com/maps?q=" + city);
 	}
-}
-
-/**
- * accionLlamar
- * @description Abrimos la aplicación de llamadas
- */
-function accionLlamar(e){
-	Ti.Platform.openURL("tel:"+usuario.telefono);
 }
 
 /**
@@ -66,17 +87,8 @@ function accionLlamar(e){
  * @param {Object} e
  */
 function close(e) {
+  //Cerramos la ventana
 	$.win.close();
-}
-
-/**
- * prepararNombre
- * @description Prepara el nombre para visualizarlo en pantalla
- * @param {Object} nombre
- * @return {String}
- */
-function prepararNombre(nombre) {
-	return Alloy.Globals.convertirPrimeraMayuscula(nombre.first) + " " + Alloy.Globals.convertirPrimeraMayuscula(nombre.last);
 }
 
 /**
@@ -84,7 +96,9 @@ function prepararNombre(nombre) {
  * @description Liberamos memoria y eliminamos eventos
  */
 function limpiarControlador() {
+  //Para liberar memoria realizamos las siguientes operaciones
 	args = null;
 	usuarios = null;
+  //Eliminamos todos los listeners del controlador
 	$.removeListener();
 }

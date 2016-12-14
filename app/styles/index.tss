@@ -1,22 +1,46 @@
-"Window":{
+/**
+ * Estilos aplicables a INDEX.TSS
+ * @author Jorge Macías García
+ * @version 1.0
+ */
+//##INDEX.TSS
+//### Fichero de estilos de INDEX.TSS
+//Todos los estilos declarados en este fichero se aplican al controlador INDEX
+"Window" : {
+	//Establecemos el titulo de la ventana
 	title: L("appTitulo"),
+	//Cuando salgamos de la aplicación pulsando el botón "atrás" se cerrara
 	exitOnClose: true
 },
-"SearchView":{
+//Vista de búsqueda en la lista
+"SearchView" : {
+	//Su color de fondo accediendo al objeto disponible Alloy.CFG
 	backgroundColor: Alloy.CFG.turquesa,
+	//Fijamos el tipo de barra de búsqueda, al pinchar sobre el icono
+	//la barra de búsqueda se expandirá
 	iconified: true,
+	//Establecemos el texto de ayuda mediante la funcion i18n L
 	hintText: L("hintBuscar")
 },
-"ListView":{
+//Damos estilos a la lista
+"ListView" : {
+	//Establecemos el color del separador de items en la lista
 	separatorColor: "#E6E6E6"
 },
-"#actualizar":{
+//Establacemos estilos de los elementos de action bar
+"#actualizar" : {
+	//Siempre se va a mostrar el icono
 	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS,
+	//Titulo del icono
 	title: "Actualizar",
+	//Ruta al icono
 	icon: "/images/action_bar_refresh.png"
 },
-"#acercaDe":{
-	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS,
+"#acercaDe" : {
+	//Se muestra el icono si cabe
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_IF_ROOM,
+	//Titulo del icono
 	title: "Acerca de",
+	//Ruta al icono
 	icon: "/images/ic_info_outline_white_24dp.png"
 }

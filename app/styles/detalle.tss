@@ -1,15 +1,33 @@
+/**
+ * Estilos aplicables a DETALLE.TSS
+ * @author Jorge Macías García
+ * @version 1.0
+ */
+//##DETALLE.TSS
+//### Fichero de estilos de DETALLE.TSS
+//Todos los estilos declarados en este fichero se aplican al controlador DETALLE
 "Window":{
+	//Establecemos el título de la ventana
 	title: L( "detalle")
 },
 "ActionBar":{
+	//Indicamos que el action bar muestre una flecha para volver
 	displayHomeAsUp: true,
+	//Indicamos la función que debe ejecutarse cuando pulsemos sobre el icono
 	onHomeIconItemSelected: "close"
 },
 "ScrollView":{
+	//Establecemos el tipo de scroll
 	scrollType: "vertical",
+	//Establecemos sus limites vertical e inferior
 	top: 0,
 	bottom: 48
 },
+//Esta clase permite crear un divisor de filas en
+//la pantalla detalle desplazado 72 puntos sobre
+//el margen izquierdo, con una altura de 2 puntos,
+//un padding superior e inferior de 8 puntos,
+//y un fondo gris
 ".divisor":{
 	left: 72,
 	width: Titanium.UI.FILL,
@@ -18,30 +36,38 @@
 	top: 8,
 	bottom: 8
 },
+//Clase genérica para indicar que una etiqueta es un icono
 ".icono":{
 	font:{
+		//Establecemos la fuente de icono
 		fontFamily: "MaterialIcons-Regular",
+		//Establecemos el tamaño
 		fontSize: 24
 	}
 },
+//Bloque de acciones de usuario
 ".acciones":{
 	bottom: 0,
 	width: Titanium.UI.FILL,
 	height: 56,
 	horizontalWrap: false
 },
+//Bloque de información
 ".bloqueInfo":{
 	left: 16,
 	right: 16,
 	width: Titanium.UI.FILL,
 	height: 48
 },
+//Clase de ayuda para posicionar icono
 ".iconoIzquierdo":{
 	left: 0
 },
+//Clase de ayuda para posicionar titulo
 ".titulo":{
 	left: 56
 },
+//Establecemos los códigos de fuente para cada icono
 ".telefonoIcono":{
 	text: "\uE0CD"
 },
@@ -51,21 +77,27 @@
 ".direccionIcono":{
 	text: "\uE88A"
 },
+//Establecemos como será la foto del usuario
 "#foto":{
+	//Su ancho será un 20% de su padre
 	width: "20%",
+	//Le indicamos que queremos un borde redondeado de 64 puntos
 	borderRadius: 64
 },
+//Establecemos como será la etiqueta del nombre
 "#nombre":{
 	font:{
 		fontSize: 22,
 		fontWeight: "bold"
 	}
 },
+//Establecemos como será la etiqueta del usuario
 "#usuario":{
 	font:{
 		fontSize: 16
 	}
 },
+//Establecemos como será un botón de la barra de acciones
 ".boton":{
 	width: "33.33%",
 	height: Titanium.UI.FILL,
@@ -75,6 +107,7 @@
 	},
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
+//Establecemos los códigos de fuente para cada icono
 "#accionLlamar":{
 	text: "\uE0CD"
 },

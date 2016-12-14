@@ -1,7 +1,21 @@
+/**
+ * Estilos globales de aplicación
+ * @author Jorge Macías García
+ * @version 1.0
+ */
+
+//##APP.TSS
+//### Fichero global de estilos de la aplicación
+
+//Todos los estilos declarados en este fichero se aplican a toda la aplicación
+//y son accesibles desde cualquier vista o controlador
+
+//Fijamos las orientaciones permitidas en la aplicación
 "Window":{
+	//No permitimos orientación apaisada
 	orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.UPSIDE_PORTRAIT]
 },
-//Clases para background
+//Clases para utilizar como backgroundColor
 ".bg-turquesa":{
 	backgroundColor: Alloy.CFG.turquesa
 },
@@ -63,14 +77,14 @@
 ".ft-gris":{
 	color: Alloy.CFG.gris
 },
-//Clases distribución
+//Clases para utilizar en la distribución de layout
 ".vertical":{
 	layout: "vertical"
 },
 ".horizontal":{
 	layout: "horizontal"
 },
-//Clases tamaño
+//Clases para utilizar diferentes tamaños de vistas
 ".fill-size":{
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE
@@ -85,7 +99,7 @@
 "fill-height":{
 	height: Titanium.UI.FILL
 },
-//Helpers
+//Clases usadas como helpers
 ".separador-8":{
 	width: Titanium.UI.FILL,
 	height: 8
@@ -93,4 +107,4 @@
 ".separador-16":{
 	width: Titanium.UI.FILL,
 	height: 16
-},
+}

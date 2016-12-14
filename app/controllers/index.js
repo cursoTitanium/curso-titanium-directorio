@@ -4,12 +4,28 @@
  * @version 1.0
  */
 
+//##INDEX.JS
+//### Controlador inicial de la aplicación
+
+//Este controlador se encarga de obtener una serie de datos remotos
+//procesarlos e insertarlos en una base de datos.
+
+//También implementa un sistema de caché con un tiempo de vida máximo
+
 var TIEMPO_CACHE, NUMERO_USUARIOS, CLAVE_CACHE, RUTA_DB, NOMBRE_DB;
 
-TIEMPO_CACHE = 60; //En segundos, 5 minutos
-NUMERO_USUARIOS = 50; //Parámetro de url
-CLAVE_CACHE = "CACHE_TTL"; //Clave de acceso a Properties
-RUTA_DB = "/db/users"; //Ruta a base de datos en assets
+//En segundos, 1 minuto
+TIEMPO_CACHE = 60;
+
+//Parámetro de url indicando el número de usuarios que queremos recuperar
+NUMERO_USUARIOS = 50;
+
+//Clave de acceso a Properties
+CLAVE_CACHE = "CACHE_TTL";
+
+//Ruta a base de datos en assets
+RUTA_DB = "/db/users";
+//Nombre de la base de datos
 NOMBRE_DB = "users";
 
 //Añadimos listener a la ventana. Escuchamos el evento open para lanzar el proceso
@@ -22,14 +38,17 @@ $.addListener($.list, "itemclick", abrirDetalle);
 $.win.open();
 
 /**
- * Comprueba la caché de la aplicación o recupera datos
+ * comprobarCache
+ * @description Comprueba la caché de la aplicación o recupera datos
  * @param  {Object} e
  */
 function comprobarCache(e) {
-
+    //Si la caché ha expirado
     if (esCacheExpirada()) {
+        //Procedemos a hacer la llamada http
         recuperarDatos();
     } else {
+        //Recuperamos datos de la DB y mostramos lista
         mostrarUsuarios();
     }
 }
@@ -40,21 +59,28 @@ function comprobarCache(e) {
  * @param  {Object} e
  */
 function actualizarDatos(e) {
-    //Recuperamos datos
+    //Esta función fuerza el reset de la DB y volvemos
+    // a pedir datos del servidor remoto
     recuperarDatos();
 }
 
 /**
- * Comprueba si la caché ha expirado
+ * esCacheExpirada
+ * @description Comprueba si la caché ha expirado
  * @return {Boolean} expirada
  */
 function esCacheExpirada() {
     var cacheTTL, ahora, expirada;
 
     expirada = false;
+
+    //Recuperamos valor del tiempo de vida de la memoria Properties
     cacheTTL = Ti.App.Properties.getDouble(CLAVE_CACHE);
+
+    //Obtenemos el tiempo en formato UNIX Time
     ahora = new Date().getTime();
 
+    //Si no hay tiempo de vida o ha caducado expiramos caché
     if (!cacheTTL || ahora > cacheTTL) {
         expirada = true;
     }
@@ -63,10 +89,12 @@ function esCacheExpirada() {
 }
 
 /**
- * Establece un nuevo tiempo de caché
+ * establecerTiempoDeCache
+ * @description Establece un nuevo tiempo de caché
  * @param  {Number} cacheTTL Tiempo en milisegundos de la proxima expiración de caché
  */
 function establecerTiempoDeCache(cacheTTL) {
+    //Guardamos en memoria Properties el valor del tiempo de vida máximo de nuestra caché
     Ti.App.Properties.setDouble(CLAVE_CACHE, cacheTTL);
 }
 
@@ -78,6 +106,7 @@ function recuperarDatos() {
 
     var url, httpClient;
 
+    //URL desde donde descargaremos los datos
     url = "https://randomuser.me/api/?format=json&results=" + NUMERO_USUARIOS;
 
     //Mostramos loader
@@ -104,8 +133,10 @@ function recuperarDatos() {
  */
 function success(e) {
 
+    //Obtenemos la respuesta en formato texto y la transformamos en un objeto
     var usuarios = JSON.parse(this.getResponseText()).results;
 
+    //Procedemos a tratar los datos remotos
     procesarUsuarios(usuarios);
 }
 
@@ -115,12 +146,14 @@ function success(e) {
  * @param {Object} e
  */
 function error(e) {
+    //Si no hemos recuperado nada del servidor remoto, mostramos lo que tengamos en la DB,
+    //si no hay nada mostraremos una lista vacía
     mostrarUsuarios();
 }
 
 /**
  * procesarUsuarios
- * Procesamiento de usuario tras obtenerlos del servidor remoto
+ * @description Procesamiento de usuario tras obtenerlos del servidor remoto
  * @param  {Object} usuarios Lista de usuarios remota
  */
 function procesarUsuarios(usuarios) {
@@ -128,9 +161,10 @@ function procesarUsuarios(usuarios) {
     var db,
         query;
 
-    //Abrimos db
+    //Abrimos conexión con la DB
     db = Ti.Database.open(NOMBRE_DB);
 
+    //Como venimos de una llamada HTTP vamos a vaciar la DB al estar caducada
     vaciarDatos(db);
 
     //Preparamos query
@@ -157,9 +191,16 @@ function procesarUsuarios(usuarios) {
     mostrarUsuarios();
 }
 
+/**
+ * vaciarDatos
+ * @description Vacía la tabla usuarios de la DB
+ * @param  {Object} db Ti.Database.DB
+ */
 function vaciarDatos(db) {
+    //Obtenemos un resultSet de la DB
     var resultSet = db.execute("SELECT * FROM USUARIOS;");
 
+    //Si hay registros, vaciamos tabla
     if (resultSet.rowCount) {
         db.execute("DELETE FROM USUARIOS;");
         db.execute("VACUUM;");
@@ -168,7 +209,7 @@ function vaciarDatos(db) {
 
 /**
  * mostrarUsuarios
- * Mostramos los usuarios en la lista
+ * @description Mostramos los usuarios en la lista
  */
 function mostrarUsuarios() {
     var db,
@@ -177,6 +218,7 @@ function mostrarUsuarios() {
         items;
 
     items = [];
+    //Preparamos query a la DB
     query = "SELECT * FROM USUARIOS";
 
     //Abrimos DB
