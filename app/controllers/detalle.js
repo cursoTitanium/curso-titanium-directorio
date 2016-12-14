@@ -11,19 +11,19 @@ $.addListener($.accionMapa, "click", accionMapa);
 $.addListener($.accionEmail, "click", accionEmail);
 
 //Establecemos datos de usuario en pantalla
-$.foto.setImage(usuario.picture.large);
-$.nombre.setText(prepararNombre(usuario.name));
-$.usuario.setText("@" + usuario.login.username);
-$.telefono.setText(usuario.cell);
+$.foto.setImage(usuario.foto);
+$.nombre.setText(usuario.nombre);
+$.usuario.setText(usuario.usuario);
+$.telefono.setText(usuario.telefono);
 $.email.setText(usuario.email);
-$.direccion.setText(Alloy.Globals.convertirPrimeraMayuscula(usuario.location.city));
+$.direccion.setText(usuario.direccion);
 
 /**
  * accionLlamar
  * @description Abrimos la aplicación de llamadas
  */
 function accionLlamar(e){
-	Ti.Platform.openURL("tel:"+usuario.cell);
+	Ti.Platform.openURL("tel:"+usuario.telefono);
 }
 
 /**
@@ -42,7 +42,7 @@ function accionMapa(e){
 	
 	var city, result;
 	
-	city = encodeURIComponent(usuario.location.city);
+	city = encodeURIComponent(usuario.direccion);
 		
 	result = Ti.Platform.openURL("geo:0,0?q=" + city);
 	
@@ -57,7 +57,7 @@ function accionMapa(e){
  * @description Abrimos la aplicación de llamadas
  */
 function accionLlamar(e){
-	Ti.Platform.openURL("tel:"+usuario.cell);
+	Ti.Platform.openURL("tel:"+usuario.telefono);
 }
 
 /**
