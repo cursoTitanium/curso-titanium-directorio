@@ -3,9 +3,10 @@
 	<string name="detalle">Detail</string>
 	<string name="acercaDe">About</string>
 	<string name="hintBuscar">Type to search...</string>
-	<string name="cerrar">Close</string>	
+	<string name="cerrar">Close</string>
 	<string name="telefono">Phone:</string>
 	<string name="direccion">Address:</string>
 	<string name="email">Email:</string>
 	<string name="cerrar">Close</string>
+	<string name="cargando">Loading</string>
 </resources>

@@ -8,4 +8,5 @@
 	<string name="direccion">Direcció:</string>
 	<string name="email">Correu:</string>
 	<string name="cerrar">Tancar</string>
+	<string name="cargando">Carregant</string>
 </resources>

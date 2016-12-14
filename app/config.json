@@ -1,23 +1,25 @@
 {
-	"global": {
-		"turquesa": "#1abc9c",
-		"verde": "#2ecc71",
-		"azul": "#3498db",
-		"morado": "#9b59b6",
-		"negro": "#34495e",
-		"amarillo": "#f1c40f",
-		"naranja": "#e67e22",
-		"rojo": "#e74c3c",
-		"blanco": "#ecf0f1",
-		"gris": "#95a5a6"
-	},
-	"env:development": {},
-	"env:test": {},
-	"env:production": {},
-	"os:android": {},
-	"os:blackberry": {},
-	"os:ios": {},
-	"os:mobileweb": {},
-	"os:windows": {},
-	"dependencies": {}
+  "global": {
+    "turquesa": "#1abc9c",
+    "verde": "#2ecc71",
+    "azul": "#3498db",
+    "morado": "#9b59b6",
+    "negro": "#34495e",
+    "amarillo": "#f1c40f",
+    "naranja": "#e67e22",
+    "rojo": "#e74c3c",
+    "blanco": "#ecf0f1",
+    "gris": "#95a5a6"
+  },
+  "env:development": {},
+  "env:test": {},
+  "env:production": {},
+  "os:android": {},
+  "os:blackberry": {},
+  "os:ios": {},
+  "os:mobileweb": {},
+  "os:windows": {},
+  "dependencies": {
+    "com.caffeinalab.titanium.loader": "*"
+  }
 }

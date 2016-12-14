@@ -1,12 +1,13 @@
 <Alloy>
-	<Window>
+	<Window id="win">
 		<Menu>
+			<MenuItem id="actualizar" onClick="actualizarDatos"/>
 			<MenuItem id="acercaDe" onClick="abrirAcercaDe"/>
 		</Menu>
 		<ListView id="list">
-			<SearchView class="searchView" ns="Ti.UI.Android" />
+			<SearchView class="searchView" ns="Ti.UI.Android"/>
 			<Templates>
-				<Require src="templates/row" />
+				<Require src="templates/row"/>
 			</Templates>
 			<ListSection id="section">
 				<ListItem titulo:text="Texto"></ListItem>

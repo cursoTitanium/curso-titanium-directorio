@@ -8,4 +8,5 @@
 	<string name="direccion">Dirección:</string>
 	<string name="email">Correo:</string>
 	<string name="cerrar">Cerrar</string>
+	<string name="cargando">Cargando</string>
 </resources>

@@ -4,35 +4,97 @@
  * @version 1.0
  */
 
-var url = "https://randomuser.me/api/?format=json&results=50";
+var TIEMPO_CACHE, NUMERO_USUARIOS, CLAVE_CACHE, RUTA_DB, NOMBRE_DB;
 
-//Añadimos listener a la ventana. Escuchamos el evento open para recuperar datos
-$.addListener($.index, "open", recuperarDatos);
+TIEMPO_CACHE = 60; //En segundos, 5 minutos
+NUMERO_USUARIOS = 50; //Parámetro de url
+CLAVE_CACHE = "CACHE_TTL"; //Clave de acceso a Properties
+RUTA_DB = "/db/users"; //Ruta a base de datos en assets
+NOMBRE_DB = "users";
+
+//Añadimos listener a la ventana. Escuchamos el evento open para lanzar el proceso
+$.addListener($.win, "open", comprobarCache);
 
 //Añadimos listener a la lista. Escuchamos los clicks sobre sus elementos
 $.addListener($.list, "itemclick", abrirDetalle);
 
 //Abrimos ventana
-$.index.open();
+$.win.open();
+
+/**
+ * Comprueba la caché de la aplicación o recupera datos
+ * @param  {Object} e
+ */
+function comprobarCache(e) {
+
+    if (esCacheExpirada()) {
+        recuperarDatos();
+    } else {
+        mostrarUsuarios();
+    }
+}
+
+/**
+ * actualizarDatos
+ * @description Reset de DB y nueva llamada htp
+ * @param  {Object} e
+ */
+function actualizarDatos(e) {
+    //Recuperamos datos
+    recuperarDatos();
+}
+
+/**
+ * Comprueba si la caché ha expirado
+ * @return {Boolean} expirada
+ */
+function esCacheExpirada() {
+    var cacheTTL, ahora, expirada;
+
+    expirada = false;
+    cacheTTL = Ti.App.Properties.getDouble(CLAVE_CACHE);
+    ahora = new Date().getTime();
+
+    if (!cacheTTL || ahora > cacheTTL) {
+        expirada = true;
+    }
+
+    return expirada;
+}
+
+/**
+ * Establece un nuevo tiempo de caché
+ * @param  {Number} cacheTTL Tiempo en milisegundos de la proxima expiración de caché
+ */
+function establecerTiempoDeCache(cacheTTL) {
+    Ti.App.Properties.setDouble(CLAVE_CACHE, cacheTTL);
+}
 
 /**
  * recuperarDatos
  * @description Recuperamos datos del servidor
- * @param {Object} e Evento de callback
  */
-function recuperarDatos(e) {
-	//Creamos httpClient
-	var httpClient = Ti.Network.createHTTPClient({
-		timeout : 5000,
-		onload : success,
-		onerror : error
-	});
+function recuperarDatos() {
 
-	//Abrimos conexión
-	httpClient.open("GET", url);
+    var url, httpClient;
 
-	//Solicitamos datos
-	httpClient.send();
+    url = "https://randomuser.me/api/?format=json&results=" + NUMERO_USUARIOS;
+
+    //Mostramos loader
+    Alloy.Globals.loader.show();
+
+    //Creamos httpClient
+    httpClient = Ti.Network.createHTTPClient({
+        timeout: 5000,
+        onload: success,
+        onerror: error
+    });
+
+    //Abrimos conexión
+    httpClient.open("GET", url);
+
+    //Solicitamos datos
+    httpClient.send();
 }
 
 /**
@@ -42,9 +104,9 @@ function recuperarDatos(e) {
  */
 function success(e) {
 
-	var usuarios = JSON.parse(this.getResponseText()).results;
+    var usuarios = JSON.parse(this.getResponseText()).results;
 
-	procesarUsuarios(usuarios);
+    procesarUsuarios(usuarios);
 }
 
 /**
@@ -53,78 +115,97 @@ function success(e) {
  * @param {Object} e
  */
 function error(e) {
-	alert(JSON.stringify(e.error));
+    mostrarUsuarios();
 }
 
+/**
+ * procesarUsuarios
+ * Procesamiento de usuario tras obtenerlos del servidor remoto
+ * @param  {Object} usuarios Lista de usuarios remota
+ */
 function procesarUsuarios(usuarios) {
 
-	var db,
-	    query;
+    var db,
+        query;
 
-	//Instalamos DB, en caso de existir la abrimos
-	if(Ti.Filesystem.isExternalStoragePresent){
-		db = Ti.Database.install("/db/users", Ti.Filesystem.externalStorageDirectory + 'db' + Ti.Filesystem.separator + "usuarios");	
-	}else{
-		db = Ti.Database.install("/db/users", "usuarios");
-	}
-	
+    //Abrimos db
+    db = Ti.Database.open(NOMBRE_DB);
 
-	//Preparamos query
-	query = "INSERT INTO USUARIOS (nombre, usuario, foto, telefono, email, direccion) VALUES (?, ?, ?, ?, ?, ?);";
+    vaciarDatos(db);
 
-	//Iniciamos transacción
-	db.execute("BEGIN");
+    //Preparamos query
+    query = "INSERT INTO USUARIOS (nombre, usuario, foto, telefono, email, direccion) VALUES (?, ?, ?, ?, ?, ?);";
 
-	//Iteramos usuarios
-	usuarios.forEach(function(usuario) {
-		db.execute(query, prepararNombre(usuario.name), "@" + usuario.login.username, usuario.picture.large, usuario.cell, usuario.email, Alloy.Globals.convertirPrimeraMayuscula(usuario.location.city));
-	});
+    //Iniciamos transacción
+    db.execute("BEGIN");
 
-	//Commit en DB
-	db.execute("COMMIT");
+    //Iteramos usuarios
+    usuarios.forEach(function(usuario) {
+        db.execute(query, prepararNombre(usuario.name), "@" + usuario.login.username, usuario.picture.large, usuario.cell, usuario.email, Alloy.Globals.convertirPrimeraMayuscula(usuario.location.city));
+    });
 
-	//Cerramos conexión
-	db.close();
+    //Commit en DB
+    db.execute("COMMIT");
 
-	mostrarUsuarios();
+    //Cerramos conexión
+    db.close();
+
+    //Establecemos nuevo tiempo de caché
+    establecerTiempoDeCache((new Date().getTime()) + (TIEMPO_CACHE * 1000));
+
+    //Mostramos usuarios
+    mostrarUsuarios();
 }
 
+function vaciarDatos(db) {
+    var resultSet = db.execute("SELECT * FROM USUARIOS;");
+
+    if (resultSet.rowCount) {
+        db.execute("DELETE FROM USUARIOS;");
+        db.execute("VACUUM;");
+    }
+}
+
+/**
+ * mostrarUsuarios
+ * Mostramos los usuarios en la lista
+ */
 function mostrarUsuarios() {
-	var db,
-	    query,
-	    resultSet,
-	    items;
+    var db,
+        query,
+        resultSet,
+        items;
 
-	items = [];
-	query = "SELECT * FROM USUARIOS";
+    items = [];
+    query = "SELECT * FROM USUARIOS";
 
-	//Abrimos DB
-	if(Ti.Filesystem.isExternalStoragePresent){
-		db = Ti.Database.open(Ti.Filesystem.externalStorageDirectory + "db" + 'path' + Ti.Filesystem.separator + "usuarios");	
-	}else{
-		db = Ti.Database.open("usuarios");
-	}
+    //Abrimos DB
+    db = Ti.Database.open(NOMBRE_DB);
 
-	//Ejecutamos query
-	resultSet = db.execute(query);
-console.log(resultSet.rowCount);
-	//Si hay elementos
-	if (resultSet.rowCount) {
-		//Iteramos
-		while (resultSet.isValidRow()) {
-			items.push(prepararListaDeUsuarios(resultSet));
-			resultSet.next();
-		}
-	} else {
-		items.push(prepararListaDeUsuarios());
-	}
+    //Ejecutamos query
+    resultSet = db.execute(query);
 
-	//Establecemos elementos en la lista
-	$.section.setItems(items);
+    //Si hay elementos
+    if (resultSet.rowCount) {
+        //Iteramos
+        while (resultSet.isValidRow()) {
+            items.push(prepararListaDeUsuarios(resultSet));
+            resultSet.next();
+        }
+    } else {
+        //Si no hay elementos cargamos ListItem personalizado
+        items.push(prepararListaDeUsuarios());
+    }
 
-	//Cerramos resultSet y conexión con la DB
-	resultSet.close();
-	db.close();
+    //Establecemos elementos en la lista
+    $.section.setItems(items);
+
+    //Cerramos resultSet y conexión con la DB
+    resultSet.close();
+    db.close();
+
+    //Ocultamos loader
+    Alloy.Globals.loader.hide();
 }
 
 /**
@@ -133,13 +214,13 @@ console.log(resultSet.rowCount);
  * @param {Object} e Evento de callback
  */
 function abrirDetalle(e) {
-	//Recogemos el elemento sobre el que hemos hecho click
-	var usuario = e.section.getItemAt(e.itemIndex).properties.usuario;
+    //Recogemos el elemento sobre el que hemos hecho click
+    var usuario = e.section.getItemAt(e.itemIndex).properties.usuario;
 
-	//Abrimos controlador detalle con información del usuario
-	Alloy.createController("detalle", {
-		usuario : usuario
-	}).getView().open();
+    //Abrimos controlador detalle con información del usuario
+    Alloy.createController("detalle", {
+        usuario: usuario
+    }).getView().open();
 }
 
 /**
@@ -148,11 +229,13 @@ function abrirDetalle(e) {
  * @param {Object} e
  */
 function abrirAcercaDe(e) {
-	Ti.UI.createAlertDialog({
-		title : L("acercaDe"),
-		message : Ti.App.name,
-		ok : L("cerrar")
-	}).show();
+
+    //Creamos dialogo personalizado
+    Ti.UI.createAlertDialog({
+        title: L("acercaDe"),
+        message: Ti.App.name,
+        ok: L("cerrar")
+    }).show();
 }
 
 /**
@@ -162,46 +245,49 @@ function abrirAcercaDe(e) {
  */
 function prepararListaDeUsuarios(registro) {
 
-	var listItem,
-	    usuario;
+    var listItem,
+        usuario;
 
-	var listItem = {
-		properties : {
-			width : Ti.UI.FILL,
-			height : 48,
-			title : "No hay elementos que mostrar",
-			color : "black"
-		}
-	};
+    //Preparamos ListItem por si no hay nada en la DB
+    listItem = {
+        properties: {
+            width: Ti.UI.FILL,
+            height: 48,
+            title: "No hay elementos que mostrar",
+            color: "black"
+        }
+    };
 
-	if (registro) {
+    //Si hay registro de entrada recuperamos campos
+    if (registro) {
 
-		usuario = {
-			id : registro.fieldByName("id"),
-			nombre : registro.fieldByName("nombre"),
-			usuario : registro.fieldByName("usuario"),
-			foto : registro.fieldByName("foto"),
-			telefono : registro.fieldByName("telefono"),
-			email : registro.fieldByName("email"),
-			direccion : registro.fieldByName("direccion")
-		};
+        usuario = {
+            id: registro.fieldByName("id"),
+            nombre: registro.fieldByName("nombre"),
+            usuario: registro.fieldByName("usuario"),
+            foto: registro.fieldByName("foto"),
+            telefono: registro.fieldByName("telefono"),
+            email: registro.fieldByName("email"),
+            direccion: registro.fieldByName("direccion")
+        };
 
-		listItem = {
-			properties : {
-				usuario : usuario,
-				searchableText : usuario.nombre
-			},
-			foto : {
-				image : usuario.foto
-			},
-			titulo : {
-				text : usuario.nombre
-			},
-			template : "row"
-		};
-	}
+        //Preparamos ListItem de registro de entrada
+        listItem = {
+            properties: {
+                usuario: usuario,
+                searchableText: usuario.nombre
+            },
+            foto: {
+                image: usuario.foto
+            },
+            titulo: {
+                text: usuario.nombre
+            },
+            template: "row"
+        };
+    }
 
-	return listItem;
+    return listItem;
 }
 
 /**
@@ -211,5 +297,6 @@ function prepararListaDeUsuarios(registro) {
  * @return {String}
  */
 function prepararNombre(nombre) {
-	return Alloy.Globals.convertirPrimeraMayuscula(nombre.first) + " " + Alloy.Globals.convertirPrimeraMayuscula(nombre.last);
+    //Utilizando la función global convertirPrimeraMayuscula formateamos el nombre del usuario
+    return Alloy.Globals.convertirPrimeraMayuscula(nombre.first) + " " + Alloy.Globals.convertirPrimeraMayuscula(nombre.last);
 }

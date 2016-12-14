@@ -1,5 +1,6 @@
 "Window":{
-	title: L("appTitulo")
+	title: L("appTitulo"),
+	exitOnClose: true
 },
 "SearchView":{
 	backgroundColor: Alloy.CFG.turquesa,
@@ -8,6 +9,11 @@
 },
 "ListView":{
 	separatorColor: "#E6E6E6"
+},
+"#actualizar":{
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS,
+	title: "Actualizar",
+	icon: "/images/action_bar_refresh.png"
 },
 "#acercaDe":{
 	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS,
