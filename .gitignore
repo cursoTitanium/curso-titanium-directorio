@@ -8,5 +8,5 @@ tmp
 .project
 .settings
 Thumbs.db
-i18n
-platform
+/i18n
+/platform

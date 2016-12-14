@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item name="primaryDark" type="color">#16a085</item>
+	<item name="primary" type="color">#1abc9c</item>
+	<item name="primaryText" type="color">#ffffff</item>
+	<item name="gray" type="color">#bdc3c7</item>
+	<item name="accent" type="color">#f1c40f</item>
+	<item name="white" type="color">#ecf0f1</item>
+	
+	<style name="Custom.ActionBar" parent="style/Widget.AppCompat.ActionBar.Solid">
+		<item name="elevation">0dp</item>
+		<item name="android:elevation">0dp</item>
+		<item name="elevation">0dp</item>
+		<item name="android:windowContentOverlay">@null</item>
+	</style>
+	<style name="Custom.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert">
+		<item name="android:windowBackground">@color/primary</item>
+		<item name="colorAccent">@color/primaryText</item>
+		<item name="android:textColorPrimary">@color/primaryText</item>
+	</style>
+	<style name="Material.Theme" parent="@style/Theme.AppCompat">
+		<item name="android:windowBackground">@color/white</item>
+		<!--Status bar color-->
+		<item name="colorPrimaryDark">@color/primaryDark</item>
+		<!--Action bar color-->
+		<item name="colorPrimary">@color/primary</item>
+		<!-- Navigation bar color -->
+		<!--<item name="android:navigationBarColor">@color/primaryDark</item>-->
+		<!--Status bar color-->
+		<item name="android:textColorPrimary">@color/primaryText</item>
+		<!-- Es el color de un control cuando no está activo -->
+		<item name="colorControlNormal">@color/gray</item>
+		<!-- Es el color de un control cuando está activo -->
+		<item name="colorControlActivated">@color/accent</item>
+		<!-- Es el color de un control cuando un usuario pincha en sobre él -->
+		<item name="colorControlHighlight">@color/accent</item>
+		<!-- Es el color del scroll cuando llegamos al final de un scroll -->
+		<item name="android:colorEdgeEffect">@color/accent</item>
+		<!-- Estilo action bar -->
+		<item name="actionBarStyle">@style/Custom.ActionBar</item>
+		<item name="alertDialogTheme">@style/Custom.Dialog.Alert</item>
+	</style>
+</resources>

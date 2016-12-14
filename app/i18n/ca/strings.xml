@@ -1,0 +1,11 @@
+<resources>
+	<string name="appTitulo">Directori</string>
+	<string name="detalle">Detall</string>
+	<string name="acercaDe">Sobre</string>
+	<string name="hintBuscar">Recerca un usuari...</string>
+	<string name="cerrar">Tancar</string>
+	<string name="telefono">Telèfon:</string>
+	<string name="direccion">Direcció:</string>
+	<string name="email">Correu:</string>
+	<string name="cerrar">Tancar</string>
+</resources>
