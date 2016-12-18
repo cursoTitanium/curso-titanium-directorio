@@ -1,15 +1,14 @@
-# Aplicación Directorio
-## Autor: Jorge Macías García
-### Email: jormagar@upv.es
+# Aplicación Directorio de Personas
+## Proyecto del Curso Básico de Titanium.
+### Autor: Jorge Macías García
+#### Email: jormagar@upv.es
 
-Proyecto del Curso Básico de Titanium. El contenido de la aplicación es un 
-directorio de personas en el que poder ver el detalle de la misma.
+La aplicación de ejemplo consiste en una estructura maestro-detalle.
 
-La aplicación utiliza una base de datos sobre la que almacena los usuarios
-recuperados desde una API de generación de usuarios aleatorios.
+La vista maestro es un listado de personas que al pinchar sobre cada una de ellas, se abrirá una vista detalle con la información correspondiente.
 
-Se implementa una caché simple por tiempo para renovar los usuarios al 
-arrancar la aplicación.
+La aplicación utiliza una base de datos sobre la que almacena los usuarios recuperados desde una API de generación de usuarios aleatorios.
 
-Por otro lado, se implementa la funcionalidad de vaciado de datos al actualizar
-manualmente los usuarios desde la acción del ActionBar
+Se implementa una caché simple por tiempo para renovar los usuarios al arrancar la aplicación.
+
+Por otro lado, se implementa la funcionalidad de vaciado de datos al actualizar manualmente los usuarios desde la acción del ActionBar
