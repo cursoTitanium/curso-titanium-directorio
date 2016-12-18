@@ -3,15 +3,15 @@
 ### Autor: Jorge Macías García
 #### Email: jormagar@upv.es
 
-#### Características
-
-**Documentación**
+####Documentación
 
 Dentro de la carpeta **docs** se puede encontrar la documentación sobre la aplicación:
 
 - Controladores
 - Vistas
 - Estilos
+
+#### Características
 
 Se ha utilizado **Docco** para generar la documentación.
 
