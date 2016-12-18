@@ -1,7 +1,17 @@
+<!-- ROW.XML -->
+<!-- Vista de la plantilla que utiliza la lista de index.xml -->
+
+<!-- Esta vista contiene una imagen para la foto de la persona 
+y dos etiquetas: una para el nombre de la persona y otra para 
+un icono que indica que existe una vista detalle -->
 <Alloy>
+	<!-- Template de ListItem con nombre row -->
 	<ItemTemplate name="row">
+		<!-- ImageView para la foto de la persona -->
 		<ImageView bindId="foto" class="foto" />
+		<!-- Etiqueta título de color negro para el nombre de la persona -->
 		<Label bindId="titulo" class="titulo ft-negro" />
+		<!-- Etiqueta icono que indica que el elemento lleva al detalle -->
 		<Label class="icono ft-turquesa" />
 	</ItemTemplate>
 </Alloy>

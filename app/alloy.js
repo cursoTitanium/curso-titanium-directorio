@@ -3,15 +3,23 @@
  * @description Fichero de declaración de funciones y variables globales
  */
 
-//##ALLOY.JS
-//### Fichero de declaración global
+//# ALLOY.JS
+//## Fichero de declaración global
 //En este fichero declararemos todas aquellas funciones y variables que queramos
 //utilizar en cualquier punto de la aplicación
 
+//Declaramos constantes
 
+//Ruta de la base de datos SQLite en la carpeta assets/db/users
 var RUTA_DB = "/db/users";
+
+//Nombre de instalación de la base de datos
 var NOMBRE_DB = "users";
+
+//Utilizamos properties para saber si estamos en el primer arranque
 var primerArranque = Ti.App.Properties.getBool("primerArranque", true);
+
+//Instancia de la DB cuando la instalemos
 var db;
 
 //Vamos a realizar la instalación de la DB en el primer arranque de la app

@@ -1,38 +1,77 @@
+<!--# DETALLE.XML -->
+<!--## Vista detalle del controlador detalle.js -->
+
+<!--Esta vista muestra un ActionBar y el detalle de la información de la persona -->
+<!--Ventana del controlador -->
 <Alloy>
 	<Window id="win">
+		<!--De esta forma establecemos el ActionBar sin especificar elementos -->
 		<ActionBar />
+		<!--Añadimos un ScrollView con layout vertical -->
 		<ScrollView class="vertical">
+			<!--Bloque de nombre, usuario y foto de la persona -->
+			<!--Ancho Ti.UI.FILL y altura Ti.UI.SIZE -->
+			<!--Disposición vertical y fondo turquesa -->
 			<View class="fill-size vertical bg-turquesa">
+				<!--Margen de 16 puntos -->
 				<View class="separador-16" />
+				<!--Utilizamos un ImageView para la foto de la persona -->
 				<ImageView id="foto" />
+				<!--Margen de 8 puntos -->
 				<View class="separador-8" />
+				<!--Establecemos la información del usuario -->
+				<!--Etiqueta nombre de la persona en una etiqueta de color blanco -->
 				<Label id="nombre" class="ft-blanco" />
+				<!--Margen de 8 puntos -->
 				<View class="separador-8" />
+				<!--Etiqueta nombre del usuario en una etiqueta de color blanco -->
 				<Label id="usuario" class="ft-blanco" />
+				<!--Margen de 16 puntos -->
 				<View class="separador-16" />
 			</View>
+			<!--Bloque de información de la persona -->
+			<!--Ancho Ti.UI.FILL y altura Ti.UI.SIZE -->
+			<!--Disposición vertical -->
 			<View class="fill-size vertical">
+				<!--Margen de 8 puntos -->
 				<View class="separador-8" />
+				<!--Bloque de información -->
 				<View class="bloqueInfo">
+					<!--Etiqueta del icono de teléfono posicionado a la izquierda y color negro -->
 					<Label class="telefonoIcono icono iconoIzquierdo ft-negro" />
+					<!--Etiqueta del del teléfono de la persona y color negro -->
 					<Label id="telefono" class="titulo ft-negro" />
 				</View>
+				<!--Divisor de fila -->
 				<View class="divisor" />
+				<!--Bloque de informaci -->ón
 				<View class="bloqueInfo">
+					<!--Etiqueta del icono de email posicionado a la izquierda y color negro -->
 					<Label class="emailIcono icono iconoIzquierdo ft-negro" />
+					<!--Etiqueta del del email de la persona y color negro -->
 					<Label id="email" class="titulo ft-negro" />
 				</View>
+				<!--Divisor de fila -->
 				<View class="divisor" />
+				<!--Bloque de información -->
 				<View class="bloqueInfo">
+					<!--Etiqueta del icono de dirección posicionado a la izquierda y color negro -->
 					<Label class="direccionIcono icono iconoIzquierdo ft-negro" />
+					<!--Etiqueta del del directorio de la persona y color negro -->
 					<Label id="direccion" class="titulo ft-negro" />
-				</View>				
+				</View>
+				<!--Margen de 16 puntos -->
 				<View class="separador-16" />
 			</View>
 		</ScrollView>
+		<!--Bloque barra de menú de acciones inferior -->
+		<!--Disposición horizontal y fondo turquesa -->
 		<View class="acciones horizontal bg-turquesa">
+			<!--Etiqueta icono telefono  -->
 			<Label id="accionLlamar" class="boton icono" />
+			<!--Etiqueta icono mapa -->
 			<Label id="accionMapa" class="boton" />
+			<!--Etiqueta icono email -->
 			<Label id="accionEmail" class="boton" />
 		</View>
 	</Window>

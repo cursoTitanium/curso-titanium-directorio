@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>APP.TSS</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+                <a class="source" href="alloy.html">
+                  alloy.js
+                </a>              
+                <a class="source" href="index.html">
+                  index.js
+                </a>
+                <a class="source" href="index.xml.html">
+                  index.xml
+                </a>                              
+                <a class="source" href="index.tss.html">
+                  index.tss
+                </a>
+                <a class="source" href="detalle.html">
+                  detalle.js
+                </a>
+                <a class="source" href="detalle.xml.html">
+                  detalle.xml
+                </a>
+                <a class="source" href="detalle.tss.html">
+                  detalle.tss
+                </a>
+                <a class="source" href="row.xml.html">
+                  row.xml
+                </a>                                
+                <a class="source" href="row.tss.html">
+                  row.tss
+                </a>
+                <a class="source" href="app.tss.html">
+                  app.tss
+                </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * Estilos globales de aplicación
+ * @author Jorge Macías García
+ * @version 1.0
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h1 id="app-tss">APP.TSS</h1>
+<h2 id="fichero-global-de-estilos-de-la-aplicaci-n">Fichero global de estilos de la aplicación</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Todos los estilos declarados en este fichero se aplican a toda la aplicación
+y son accesibles desde cualquier vista o controlador</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Fijamos las orientaciones permitidas en la aplicación</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">"Window"</span>:{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>No permitimos orientación apaisada</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	orientationModes: [Titanium.UI.PORTRAIT, Titanium.UI.UPSIDE_PORTRAIT]
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Clases para utilizar como backgroundColor</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".bg-turquesa"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.turquesa
+},
+<span class="hljs-string">".bg-verde"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.verde
+},
+<span class="hljs-string">".bg-azul"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.azul
+},
+<span class="hljs-string">".bg-morado"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.morado
+},
+<span class="hljs-string">".bg-negro"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.negro
+},
+<span class="hljs-string">".bg-amarillo"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.amarillo
+},
+<span class="hljs-string">".bg-naranja"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.naranja
+},
+<span class="hljs-string">".bg-rojo"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.rojo
+},
+<span class="hljs-string">".bg-blanco"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.blanco
+},
+<span class="hljs-string">".bg-gris"</span>:{
+	<span class="hljs-attr">backgroundColor</span>: Alloy.CFG.gris
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Clases para fuentes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".ft-turquesa"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.turquesa
+},
+<span class="hljs-string">".ft-verde"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.verde
+},
+<span class="hljs-string">".ft-azul"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.azul
+},
+<span class="hljs-string">".ft-morado"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.morado
+},
+<span class="hljs-string">".ft-negro"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.negro
+},
+<span class="hljs-string">".ft-amarillo"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.amarillo
+},
+<span class="hljs-string">".ft-naranja"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.naranja
+},
+<span class="hljs-string">".ft-rojo"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.rojo
+},
+<span class="hljs-string">".ft-blanco"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.blanco
+},
+<span class="hljs-string">".ft-gris"</span>:{
+	<span class="hljs-attr">color</span>: Alloy.CFG.gris
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Clases para utilizar en la distribución de layout</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".vertical"</span>:{
+	<span class="hljs-attr">layout</span>: <span class="hljs-string">"vertical"</span>
+},
+<span class="hljs-string">".horizontal"</span>:{
+	<span class="hljs-attr">layout</span>: <span class="hljs-string">"horizontal"</span>
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Clases para utilizar diferentes tamaños de vistas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".fill-size"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.FILL,
+	<span class="hljs-attr">height</span>: Titanium.UI.SIZE
+},
+<span class="hljs-string">".size-size"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.SIZE,
+	<span class="hljs-attr">height</span>: Titanium.UI.SIZE
+},
+<span class="hljs-string">"fill-width"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.FILL
+},
+<span class="hljs-string">"fill-height"</span>:{
+	<span class="hljs-attr">height</span>: Titanium.UI.FILL
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Clases usadas como helpers</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".separador-8"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.FILL,
+	<span class="hljs-attr">height</span>: <span class="hljs-number">8</span>
+},
+<span class="hljs-string">".separador-16"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.FILL,
+	<span class="hljs-attr">height</span>: <span class="hljs-number">16</span>
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -4,8 +4,8 @@
  * @version 1.0
  */
 
-//##APP.TSS
-//### Fichero global de estilos de la aplicación
+//# APP.TSS
+//## Fichero global de estilos de la aplicación
 
 //Todos los estilos declarados en este fichero se aplican a toda la aplicación
 //y son accesibles desde cualquier vista o controlador

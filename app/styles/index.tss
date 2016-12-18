@@ -3,8 +3,9 @@
  * @author Jorge Macías García
  * @version 1.0
  */
-//##INDEX.TSS
-//### Fichero de estilos de INDEX.TSS
+//# INDEX.TSS
+//## Fichero de estilos de INDEX.TSS
+
 //Todos los estilos declarados en este fichero se aplican al controlador INDEX
 "Window" : {
 	//Establecemos el titulo de la ventana

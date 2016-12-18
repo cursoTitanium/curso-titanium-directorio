@@ -4,8 +4,8 @@
  * @version 1.0
  */
 
-//##INDEX.JS
-//### Controlador inicial de la aplicación
+//# INDEX.JS
+//## Controlador inicial de la aplicación
 
 //Este controlador se encarga de obtener una serie de datos remotos
 //procesarlos e insertarlos en una base de datos.

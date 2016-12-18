@@ -4,8 +4,8 @@
  * @version 1.0
  */
 
-//##DETALLE.JS
-//### Controlador detalle de la aplicación
+//# DETALLE.JS
+//## Controlador detalle de la aplicación
 
 //Este controlador se encarga de mostrar los datos de un usuario
 //permitiendo llamarle por telefono, accediendo a su localización y enviarle un email

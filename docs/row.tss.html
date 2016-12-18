@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ROW.TSS</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+                <a class="source" href="alloy.html">
+                  alloy.js
+                </a>              
+                <a class="source" href="index.html">
+                  index.js
+                </a>
+                <a class="source" href="index.xml.html">
+                  index.xml
+                </a>                              
+                <a class="source" href="index.tss.html">
+                  index.tss
+                </a>
+                <a class="source" href="detalle.html">
+                  detalle.js
+                </a>
+                <a class="source" href="detalle.xml.html">
+                  detalle.xml
+                </a>
+                <a class="source" href="detalle.tss.html">
+                  detalle.tss
+                </a>
+                <a class="source" href="row.xml.html">
+                  row.xml
+                </a>                                
+                <a class="source" href="row.tss.html">
+                  row.tss
+                </a>
+                <a class="source" href="app.tss.html">
+                  app.tss
+                </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * Estilos aplicables a ROW.TSS
+ * @author Jorge Macías García
+ * @version 1.0
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h1 id="row-tss">ROW.TSS</h1>
+<h2 id="fichero-de-estilos-de-row-tss">Fichero de estilos de ROW.TSS</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Todos los estilos declarados en este fichero se aplican sobre el ItemTemplate de la Lista de personas</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Elemento ItemTemplate
+Definimos que ocupe el ancho de su contenedor
+con una altura de 56 puntos y un margen de 16 puntos
+a izquierda y derecha</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">"ItemTemplate"</span>:{
+	<span class="hljs-attr">width</span>: Titanium.UI.FILL,
+	<span class="hljs-attr">height</span>: <span class="hljs-number">56</span>,
+	<span class="hljs-attr">left</span>: <span class="hljs-number">16</span>,
+	<span class="hljs-attr">right</span>: <span class="hljs-number">16</span>
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Clase para la etiqueta de nombre de la persona
+definimos sus limites, a 56 puntos de izquierda y derecha
+con un tamaño de fuente de 16 puntos</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".titulo"</span>:{
+	<span class="hljs-attr">left</span>: <span class="hljs-number">56</span>,
+	<span class="hljs-attr">right</span>: <span class="hljs-number">56</span>,
+	<span class="hljs-attr">font</span>: {
+		<span class="hljs-attr">fontSize</span>: <span class="hljs-number">16</span>
+	}
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Clase para la foto de la persona
+Posicionada a 0 puntos del lado izquierdo
+Con un tamaño de 40x40 puntos
+Un borde con un radio de 20 puntos, justo la mitad
+de su tamaño, para que sea un círculo
+Establecemos una imagen por defecto en caso de que no sea posible
+recuperar su imagen remota</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".foto"</span>:{
+	<span class="hljs-attr">left</span>: <span class="hljs-number">0</span>,
+	<span class="hljs-attr">width</span>: <span class="hljs-number">40</span>,
+	<span class="hljs-attr">height</span>: <span class="hljs-number">40</span>,
+	<span class="hljs-attr">borderRadius</span>: <span class="hljs-number">20</span>,
+	<span class="hljs-attr">defaultImage</span>: <span class="hljs-string">"/images/profile.png"</span>
+},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Clase para el icono de ir a detalle
+Posicionado a 0 puntos del lado derecho
+Indicamos la familia de la fuente de tipo icono
+con un tamaño de 24 puntos
+Indicamos el código del icono “&gt;” en formato utf8 </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-string">".icono"</span>:{
+	<span class="hljs-attr">right</span>: <span class="hljs-number">0</span>,
+	<span class="hljs-attr">font</span>:{
+		<span class="hljs-attr">fontFamily</span>: <span class="hljs-string">"MaterialIcons-Regular"</span>,
+		<span class="hljs-attr">fontSize</span>: <span class="hljs-number">24</span>
+	},
+	<span class="hljs-attr">text</span>: <span class="hljs-string">"\uE315"</span>
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

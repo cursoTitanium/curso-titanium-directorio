@@ -1,15 +1,32 @@
+<!-- INDEX.XML -->
+<!-- Vista principal del controlador index.js -->
+
+<!-- Esta vista prepara el ActionBar con 2 elementos y muestra la lista de personas -->
 <Alloy>
+	<!-- Ventana del controlador -->
 	<Window id="win">
+		<!-- ActionBar: Utilizamos el tag Menu y los elementos se representan con el tag MenuItem -->
 		<Menu>
+			<!-- MenuItem que representa el icono para actualizar datos, -->
+			<!-- le asignamos callback al click sobre el item -->
 			<MenuItem id="actualizar" onClick="actualizarDatos"/>
+			<!-- MenuItem que representa el icono para abrir la ventana Acerca De -->
+			<!-- le asignamos callback al click sobre el item -->
 			<MenuItem id="acercaDe" onClick="abrirAcercaDe"/>
 		</Menu>
+		<!-- ListView en la que mostraremos los usuarios del directorio -->
 		<ListView id="list">
+			<!-- Barra de búsqueda de la lista, importante establecer -->
+			<!-- el espacio de nombres ns="Ti.UI.Android" -->
 			<SearchView class="searchView" ns="Ti.UI.Android"/>
+			<!-- Declaramos los templates de la lista -->
 			<Templates>
+				<!-- Insertamos la vista del template mediante Require -->
 				<Require src="templates/row"/>
 			</Templates>
+			<!-- Sección de la lista, aquí insertaremos los items -->
 			<ListSection id="section">
+				<!-- Elemento de la lista que aparecería si no añadimos elementos a la sección -->
 				<ListItem titulo:text="Texto"></ListItem>
 			</ListSection>
 		</ListView>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>DETALLE.JS</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+                <a class="source" href="alloy.html">
+                  alloy.js
+                </a>              
+                <a class="source" href="index.html">
+                  index.js
+                </a>
+                <a class="source" href="index.xml.html">
+                  index.xml
+                </a>                              
+                <a class="source" href="index.tss.html">
+                  index.tss
+                </a>
+                <a class="source" href="detalle.html">
+                  detalle.js
+                </a>
+                <a class="source" href="detalle.xml.html">
+                  detalle.xml
+                </a>
+                <a class="source" href="detalle.tss.html">
+                  detalle.tss
+                </a>
+                <a class="source" href="row.xml.html">
+                  row.xml
+                </a>                                
+                <a class="source" href="row.tss.html">
+                  row.tss
+                </a>
+                <a class="source" href="app.tss.html">
+                  app.tss
+                </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * Controlador detalle de aplicación
+ * @author Jorge Macías García
+ * @version 1.0
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h1 id="detalle-js">DETALLE.JS</h1>
+<h2 id="controlador-detalle-de-la-aplicaci-n">Controlador detalle de la aplicación</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Este controlador se encarga de mostrar los datos de un usuario
+permitiendo llamarle por telefono, accediendo a su localización y enviarle un email</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Recogemos los parámetros que vienen de index.js</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> args = $.args,
+    usuario = args.usuario || {};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Añadimos listener evento close</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>$.addListener($.win, <span class="hljs-string">"close"</span>, limpiarControlador);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Añadimos listener a los botones de la barra inferior de acciones</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>$.addListener($.accionLlamar, <span class="hljs-string">"click"</span>, accionLlamar);
+$.addListener($.accionMapa, <span class="hljs-string">"click"</span>, accionMapa);
+$.addListener($.accionEmail, <span class="hljs-string">"click"</span>, accionEmail);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Establecemos datos de usuario en pantalla</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>$.foto.setImage(usuario.foto);
+$.nombre.setText(usuario.nombre);
+$.usuario.setText(usuario.usuario);
+$.telefono.setText(usuario.telefono);
+$.email.setText(usuario.email);
+$.direccion.setText(usuario.direccion);
+
+<span class="hljs-comment">/**
+ * accionLlamar
+ * @description Abrimos la aplicación de llamadas
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accionLlamar</span>(<span class="hljs-params">e</span>)</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Utilizamos la función openURL para ejecutar el esquema de telefono</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> result = Ti.Platform.openURL(<span class="hljs-string">"tel:"</span>+usuario.telefono);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Si no ha tenido éxito la operación informamos que el dispositivo no puede
+realizar llamadas.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span>(!result){
+    alert(<span class="hljs-string">"Este dispositivo no puede hacer llamadas"</span>);
+  }
+}
+
+<span class="hljs-comment">/**
+ * accionEmail
+ * @description Abrimos la aplicación de email
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accionEmail</span>(<span class="hljs-params">e</span>)</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Utilizamos la función openURL para ejecutar el esquema de envío de email</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">var</span> result = Ti.Platform.openURL(<span class="hljs-string">"mailto:"</span>+usuario.email);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Si no ha tenido éxito la operación informamos que el dispositivo no tiene
+una aplicación para enviar emails</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span>(!result){
+    alert(<span class="hljs-string">"Este dispositivo no tiene una aplicación instalada que permita enviar emails"</span>);
+  }
+}
+
+<span class="hljs-comment">/**
+ * accionMapa
+ * @description Abrimos la aplicación de mapa
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">accionMapa</span>(<span class="hljs-params">e</span>)</span>{
+
+	<span class="hljs-keyword">var</span> city, result;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Codificamos la dirección para enviarlo como parámetro de url</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	city = <span class="hljs-built_in">encodeURIComponent</span>(usuario.direccion);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Utilizamos la función openURL para ejecutar el esquema de mapas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	result = Ti.Platform.openURL(<span class="hljs-string">"geo:0,0?q="</span> + city);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Si no ha tenido éxito la operación informamos que el dispositivo no tiene
+una aplicación para visualizar el mapa y abrimos el navegador</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-keyword">if</span>(!result){
+		Ti.Platform.openURL(<span class="hljs-string">"https://www.google.com/maps?q="</span> + city);
+	}
+}
+
+<span class="hljs-comment">/**
+ * close
+ * @description Cierra la ventana
+ * @param {Object} e
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">close</span>(<span class="hljs-params">e</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Cerramos la ventana</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	$.win.close();
+}
+
+<span class="hljs-comment">/**
+ * limpiarControlador
+ * @description Liberamos memoria y eliminamos eventos
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">limpiarControlador</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Para liberar memoria realizamos las siguientes operaciones</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	args = <span class="hljs-literal">null</span>;
+	usuarios = <span class="hljs-literal">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Eliminamos todos los listeners del controlador</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	$.removeListener();
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

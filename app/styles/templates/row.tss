@@ -1,9 +1,26 @@
+/**
+ * Estilos aplicables a ROW.TSS
+ * @author Jorge Macías García
+ * @version 1.0
+ */
+//# ROW.TSS
+//## Fichero de estilos de ROW.TSS
+
+//Todos los estilos declarados en este fichero se aplican sobre el ItemTemplate de la Lista de personas
+
+//Elemento ItemTemplate
+//Definimos que ocupe el ancho de su contenedor
+//con una altura de 56 puntos y un margen de 16 puntos
+//a izquierda y derecha
 "ItemTemplate":{
 	width: Titanium.UI.FILL,
 	height: 56,
 	left: 16,
 	right: 16
 },
+//Clase para la etiqueta de nombre de la persona
+//definimos sus limites, a 56 puntos de izquierda y derecha
+//con un tamaño de fuente de 16 puntos
 ".titulo":{
 	left: 56,
 	right: 56,
@@ -11,6 +28,13 @@
 		fontSize: 16
 	}
 },
+//Clase para la foto de la persona
+//Posicionada a 0 puntos del lado izquierdo
+//Con un tamaño de 40x40 puntos
+//Un borde con un radio de 20 puntos, justo la mitad
+//de su tamaño, para que sea un círculo
+//Establecemos una imagen por defecto en caso de que no sea posible
+//recuperar su imagen remota
 ".foto":{
 	left: 0,
 	width: 40,
@@ -18,6 +42,11 @@
 	borderRadius: 20,
 	defaultImage: "/images/profile.png"
 },
+//Clase para el icono de ir a detalle
+//Posicionado a 0 puntos del lado derecho
+//Indicamos la familia de la fuente de tipo icono
+//con un tamaño de 24 puntos
+//Indicamos el código del icono ">" en formato utf8 
 ".icono":{
 	right: 0,
 	font:{

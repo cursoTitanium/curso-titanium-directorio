@@ -3,8 +3,9 @@
  * @author Jorge Macías García
  * @version 1.0
  */
-//##DETALLE.TSS
-//### Fichero de estilos de DETALLE.TSS
+//# DETALLE.TSS
+//## Fichero de estilos de DETALLE.TSS
+
 //Todos los estilos declarados en este fichero se aplican al controlador DETALLE
 "Window":{
 	//Establecemos el título de la ventana
