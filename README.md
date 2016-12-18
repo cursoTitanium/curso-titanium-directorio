@@ -5,6 +5,16 @@
 
 #### Características
 
+**Documentación**
+
+Dentro de la carpeta **docs** se puede encontrar la documentación sobre la aplicación:
+
+- Controladores
+- Vistas
+- Estilos
+
+Se ha utilizado **Docco** para generar la documentación.
+
 **Navegación: Maestro - detalle**
 
 Maestro: Listado de personas
