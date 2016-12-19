@@ -64,5 +64,4 @@ xmlns:ti="http://ti.appcelerator.org">
 	<plugins>
 		<plugin version="1.0">ti.alloy</plugin>
 	</plugins>
-	<property name="appc-app-id" type="string">584042c07db2a88e76588dd2</property>
 </ti:app>
